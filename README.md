@@ -65,7 +65,7 @@ data/observations.csv
 
 `research_memo.md` は研究メモ、`data/observations.csv` は小さな観察データです。
 
-方法Bでは、新しいフォルダに `hello.py` を作ります。
+方法Bでは、新しいフォルダに `HelloGit.java` を作ります。
 
 ## 作業の流れ
 
@@ -83,7 +83,7 @@ GitHub                         ローカルPC                      GitHub
 ```text
 ローカルPC                                      GitHub
 +-------------+   git init / commit / push    +----------------+
-| hello.py    | ----------------------------> | new repository |
+| HelloGit.java | --------------------------> | new repository |
 +-------------+                              +----------------+
 ```
 
@@ -242,6 +242,45 @@ git push origin main
 
 つまり、`git push origin main` は「ローカルの `main` ブランチを、`origin` という名前の GitHub リポジトリへ送る」という意味です。
 
+## 演習課題A: 研究メモを自分の内容に更新する
+
+ここからは、方法Aの説明付き基本手順を参考にして、自分で小さな変更を作ります。
+
+課題:
+
+- `research_memo.md` に、自分の研究テーマに近い観察メモを2行以上追加する
+- `data/observations.csv` は読むだけにし、今回は変更しない
+- 変更後、`git add`、`git commit`、`git push` の流れを自分で実行する
+
+追加する内容の例:
+
+```text
+- 今日の作業: 実験条件AとBの違いを確認した。
+- 気づいたこと: 測定値を見る前に、記録方法をそろえる必要がある。
+```
+
+実行するコマンドの例:
+
+```bash
+git status
+```
+
+```bash
+git add research_memo.md
+```
+
+```bash
+git commit -m "研究テーマに関するメモを追加"
+```
+
+```bash
+git push
+```
+
+この課題の主目的:
+
+- ファイル編集そのものではなく、変更を Git で記録して GitHub に送る流れを体感すること
+
 ## 方法B: ローカルで作ったプログラムを GitHub へ送る
 
 方法Bでは、先にローカル PC で新しいフォルダとプログラムを作り、その後で GitHub に空のリポジトリを作成して push します。
@@ -289,29 +328,33 @@ cd hello-git
 
 - 方法Aの clone フォルダとは別の `hello-git` フォルダにいることを確認します。
 
-### B-3. `hello.py` を作る
+### B-3. `HelloGit.java` を作る
 
-VS Code で `hello.py` を作成し、次の内容を書いて保存します。
+VS Code で `HelloGit.java` を作成し、次の内容を書いて保存します。
 
-```python
-print("Hello, Git and GitHub!")
+```java
+public class HelloGit {
+    public static void main(String[] args) {
+        System.out.println("Hello, Git and GitHub!");
+    }
+}
 ```
 
-必要に応じて、Python を実行して確認します。
+必要に応じて、Java をコンパイルして実行します。
 
 ```bash
-python hello.py
+javac HelloGit.java
 ```
 
-うまくいかない場合:
-
 ```bash
-python3 hello.py
+java HelloGit
 ```
 
 確認ポイント:
 
 - ターミナルに `Hello, Git and GitHub!` と表示されるか確認します。
+- Java が実行できない場合でも、`HelloGit.java` を作成して commit する演習は続けられます。
+- `HelloGit.class` が作成された場合でも、今回は `git add` しません。
 
 ### B-4. Git リポジトリとして初期化する
 
@@ -332,13 +375,14 @@ git status
 
 確認ポイント:
 
-- `hello.py` が未追跡ファイルとして表示されるか確認します。
+- `HelloGit.java` が未追跡ファイルとして表示されるか確認します。
+- `HelloGit.class` が表示された場合でも、今回は追加しません。
 - まだ commit の対象にはなっていません。
 
-### B-6. `hello.py` を commit の対象にする
+### B-6. `HelloGit.java` を commit の対象にする
 
 ```bash
-git add hello.py
+git add HelloGit.java
 ```
 
 ```bash
@@ -347,7 +391,7 @@ git status
 
 確認ポイント:
 
-- `hello.py` が緑色で表示されるか確認します。
+- `HelloGit.java` が緑色で表示されるか確認します。
 
 ### B-7. commit する
 
@@ -419,7 +463,39 @@ git push -u origin main
 確認ポイント:
 
 - GitHub のリポジトリ画面を再読み込みします。
-- `hello.py` が GitHub 上に表示されるか確認します。
+- `HelloGit.java` が GitHub 上に表示されるか確認します。
+
+## 演習課題B: ローカルで作った Java ファイルを GitHub に送る
+
+課題:
+
+- 方法Aとは別の `hello-git` フォルダで作業する
+- `HelloGit.java` を自分で作成する
+- commit メッセージを自分で考えて commit する
+- GitHub 上に空のリポジトリを作り、`git remote add origin ...` と `git push -u origin main` で送る
+
+余裕がある場合:
+
+`HelloGit.java` の表示を、自分の研究テーマに近い短い文に変更して2つ目の commit を作ります。
+
+例:
+
+```java
+System.out.println("I will record small research changes with Git.");
+```
+
+確認する Git の流れ:
+
+```text
+新しいフォルダを作る
+  -> ファイルを作る
+  -> git init
+  -> git add
+  -> git commit
+  -> GitHub に空リポジトリを作る
+  -> git remote add origin ...
+  -> git push -u origin main
+```
 
 補足:
 
@@ -451,9 +527,9 @@ git push
 
 方法B:
 
-- 新しい `hello-git` フォルダで `hello.py` を作成している
+- 新しい `hello-git` フォルダで `HelloGit.java` を作成している
 - `git init`、`git add`、`git commit` を実行している
-- GitHub 上の空リポジトリに `hello.py` を push できている
+- GitHub 上の空リポジトリに `HelloGit.java` を push できている
 
 ## よくあるエラー
 
@@ -553,7 +629,7 @@ git status
 
 方法B:
 
-- `hello.py` を push した GitHub リポジトリ URL
+- `HelloGit.java` を push した GitHub リポジトリ URL
 - `helloプログラムを追加` commit の URL
 - 方法Bで詰まった場合は、どこで詰まったかを書いた作業記録
 
@@ -583,10 +659,10 @@ git status
 
 - [ ] 方法Aとは別のフォルダで作業した
 - [ ] 新しい `hello-git` フォルダを作った
-- [ ] `hello.py` を作った
+- [ ] `HelloGit.java` を作った
 - [ ] `git init` を実行した
 - [ ] `git status` を確認した
-- [ ] `git add hello.py` を実行した
+- [ ] `git add HelloGit.java` を実行した
 - [ ] `git commit -m "helloプログラムを追加"` を実行した
 - [ ] GitHub 上で空のリポジトリを作成した
 - [ ] GitHub 上で README、`.gitignore`、license を追加しなかった
