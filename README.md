@@ -72,55 +72,44 @@ data/observations.csv
 
 方法Bでは、新しいフォルダに `HelloGit.java` を作ります。
 
-## 授業用フォルダを準備する
+## 授業用の作業場所を準備する
 
-方法Aに入る前に、VS Code で授業用の親フォルダを開きます。
+方法Aに入る前に、PC 上に授業用の親フォルダを1つ作ります。
 
-その親フォルダの中に、レッスンごとの作業フォルダを作ります。
+フォルダ名の例:
 
 ```text
-.
-├── 01
-├── 02
-├── 03
-├── 04
-└── 05
+github-lesson-work
 ```
 
-ターミナルで作る場合は、授業用の親フォルダで次を実行します。
+ターミナルで作る場合は、作業しやすい場所で次を実行します。
 
 ```bash
-mkdir 01
+mkdir github-lesson-work
 ```
 
 ```bash
-mkdir 02
+cd github-lesson-work
 ```
 
-```bash
-mkdir 03
-```
+この親フォルダの中で各レッスンのリポジトリを clone します。`git clone` を実行すると、リポジトリ名と同じフォルダが自動で作成されます。
 
-```bash
-mkdir 04
-```
+例:
 
-```bash
-mkdir 05
-```
-
-すでに同じ名前のフォルダがある場合は、新しく作り直す必要はありません。
-
-このレッスンでは、まず `01` フォルダに移動します。
-
-```bash
-cd 01
+```text
+github-lesson-work/
+├── student01-git-lesson-01-basic/
+├── student01-git-lesson-02-gitflow/
+├── git-lesson-03-conflict-group-a/
+├── git-lesson-04-pr-review-group-a/
+└── student01-git-lesson-05-actions-artifact/
 ```
 
 確認ポイント:
 
-- VS Code のエクスプローラーに `01`、`02`、`03`、`04`、`05` が表示されるか確認します。
-- ターミナルが `01` フォルダにいる状態で、次の方法Aに進みます。
+- VS Code で `github-lesson-work` を開きます。
+- `01`、`02` のようなフォルダを手動で作る必要はありません。
+- clone 後は、clone で作成されたリポジトリフォルダの中に移動します。
 
 ## 作業の流れ
 
@@ -167,13 +156,7 @@ https://github.com/ユーザー名/リポジトリ名.git
 
 ### A-3. GitHub から clone する
 
-`01` フォルダに移動してから実行します。`<GitHubリポジトリURL>` は自分のリポジトリの URL に置き換えます。
-
-現在 `01` フォルダにいない場合は、先に移動します。
-
-```bash
-cd 01
-```
+授業用の親フォルダで実行します。`<GitHubリポジトリURL>` は自分のリポジトリの URL に置き換えます。
 
 ```bash
 git clone <GitHubリポジトリURL>
